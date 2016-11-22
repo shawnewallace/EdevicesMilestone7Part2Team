@@ -1,0 +1,77 @@
+﻿@model EDeviceClaims.WebUi.Models.ClaimViewModel
+@{
+    ViewBag.Title = "Check Claim Status";
+}
+<br />
+<hr />
+<div class="welcome">
+    <h2>@ViewBag.Title</h2>
+</div>
+<hr />
+<br />
+<h3>Your claim is currently under review.</h3>
+<hr/>
+<table class="table table-bordered table-striped">
+    <tr>
+        <td>
+            <span style="color:#660033"><strong>Status</strong></span>
+        </td>
+        <td>
+            @Model.Status
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span style="color:#660033"><strong>Claim Started</strong></span>
+        </td>
+        <td>
+            @Model.WhenCreated
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span style="color:#660033"><strong>Last Updated</strong></span>
+        </td>
+        <td>
+            @Model.WhenLastModified
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span style="color:#660033"><strong>Claim Number</strong></span>
+        </td>
+        <td>
+            @Model.Id
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span style="color:#660033"><strong>Device</strong></span>
+        </td>
+        <td>
+            @Model.DeviceName
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span style="color:#660033"><strong>Serial Number</strong></span>
+        </td>
+        <td>
+            @Model.SerialNumber
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span style="color:#660033"><strong>Policy Number</strong></span>
+        </td>
+        <td>
+            @Model.Number
+        </td>
+    </tr>
+</table>
+
+<br/>
+@Html.ActionLink("Return Home", "Index", "Home", new {@id ="HomePage"}, new { @class = "btn btn-info" })
+<br/>
+<br />
+<h6>*This process may take between 5 to 7 business days.</h6>

@@ -1,0 +1,73 @@
+﻿@using System.Activities.Expressions
+@using EDeviceClaims.Core;
+@{
+    ViewBag.Title = "Home Page";
+}
+<br />
+<hr />
+<div class="welcome">
+    <h1>CSCC Online EDevice Claims Center</h1>
+    @if (!Request.IsAuthenticated)
+    {
+        <p class="lead">Please log in to access the claims system.</p>
+    }
+    else
+    {
+        <p class="lead">Welcome to EDevice claims online.</p>
+    }
+
+</div>
+<hr />
+<div class="row">
+    <div class="col-lg-4" align="center">
+        <br />
+        <hr />
+        <h2>All your gadgets covered. Safe and sounds from lifes little moments.</h2>
+        <hr />
+    </div>
+    <div class="col-lg-8 image" align="center">
+        <img src="~/Content/Images/iPhoneHome.png" />
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <h2>CSCC</h2>
+        <p>
+            CSCC EDevice Claims Center is developed by the MVC 5 C# team at Columbus State.
+            Click below for more information about Columbus State.
+        </p>
+        <p><a class="btn btn-info" href="http://cscc.edu">Learn more</a></p>
+    </div>
+    <div class="col-md-4">
+        @if (!Request.IsAuthenticated)
+        {
+            <h2>Login</h2>
+            <p>Please Login into start a new claim or to check the status of an existing claim.</p>
+            <p>
+                @Html.ActionLink("Log in", "Login", "Account", new { @id = "loginLink" }, new { @class = "btn btn-info" })
+            </p>
+        }
+        else
+        {
+            <h2>Claims</h2>
+            <p>Click below to start a new claim or check an existing claim on your covered device.</p>
+            <p>
+                @if (User.IsInRole(ApplicationRoles.PolicyHolder))
+                {
+                @Html.ActionLink("My Devices", "DeviceList", "Device", new { @id = "myDevice" }, new { @class = "btn btn-info" })
+                }
+                @if (User.IsInRole(ApplicationRoles.Underwriter))
+                {
+                    @Html.ActionLink("All Devices", "DeviceList", "UnderwriterDevice", null, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Active Claims", "ClaimList", "UnderwriterClaim", null, new { @class = "btn btn-info" })
+                }
+            </p>
+        }
+    </div>
+    <div class="col-md-4">
+        <h2>Eligilbe Devices</h2>
+        <p>You can easily find what devices are eligilbe for coverage under CSCC EDevice Policy.</p>
+        <p>@Html.ActionLink("Eligibe Devices", "CoveredDevicesView", "Home", new { @id = "myDevice" }, new { @class = "btn btn-info" })</p>
+    </div>
+</div>

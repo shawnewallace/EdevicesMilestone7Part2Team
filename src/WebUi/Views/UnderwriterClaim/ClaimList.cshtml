@@ -1,0 +1,35 @@
+﻿@model EDeviceClaims.WebUi.Models.ClaimListViewModel
+<br />
+<hr />
+<div class="welcome" align="center">
+    <h1>Active Claims</h1>
+</div>
+<hr />
+<br />
+<div class="row">
+    <div class="col-lg-4">
+        <p>List of active claims.</p>
+    </div>
+</div>
+<table class="table table-bordered table-hover">
+    <tr>
+        <td>Claim ID</td>
+        <td>Date Created</td>
+        <td>Policy No.</td>
+        <td>Device</td>
+        <td>Serial No.</td>
+    </tr>
+    @foreach (var claim in Model)
+    {
+        <tr>
+            <td>@claim.Id</td>
+            <td>@claim.WhenCreated</td>
+            <td>@claim.Number</td>
+            <td>@claim.DeviceName</td>
+            <td>@claim.SerialNumber</td>
+        </tr>
+    }
+</table>
+<hr />
+@Html.ActionLink("Return Home", "Index", "Home", new { @id = "HomePage" }, new { @class = "btn btn-info" })
+<br />

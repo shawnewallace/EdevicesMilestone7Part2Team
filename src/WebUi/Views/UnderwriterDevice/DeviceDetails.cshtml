@@ -1,0 +1,49 @@
+﻿@model EDeviceClaims.WebUi.Models.DeviceViewModel
+@{
+    ViewBag.Title = "Device Details";
+}
+<br />
+<hr />
+<div class="welcome">
+    <h2>@ViewBag.Title</h2>
+</div>
+<hr />
+<br />
+<table class="table table-striped table-bordered">
+    <tr>
+        <td>
+            <span style="color: #660033"><strong>Device</strong></span>
+        </td>
+        <td>
+            @Model.Name
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span style="color: #660033"><strong>Serial Number</strong></span>
+        </td>
+        <td>
+            @Model.SerialNumber
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span style="color: #660033"><strong>Device ID</strong></span>
+        </td>
+        <td>
+            @Model.PolicyId
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span style="color: #660033"><strong>Policy Number</strong></span>
+        </td>
+        <td>
+            @Model.PolicyNumber
+        </td>
+    </tr>
+</table>
+<div class="btn-group">
+    @Html.ActionLink("Go Back", "DeviceList", "UnderwriterDevice", new { @class = "btn btn-lg btn-info" })
+    @Html.Partial("_ClaimButton", Model)
+</div>

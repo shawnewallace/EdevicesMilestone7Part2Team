@@ -1,0 +1,10 @@
+﻿@model EDeviceClaims.WebUi.Models.DeviceViewModel
+
+@if (!Model.HasClaim)
+{
+    @Html.ActionLink("Start a Claim", "Start", "Claim", new { @policyId = Model.PolicyId }, new { @class = "btn btn-lg btn-danger" })
+}
+else
+{
+    @Html.ActionLink("Check Claim Details", "ClaimDetails", "Claim", new { @claimId = Model.ClaimId }, new { @class = "btn btn-lg btn-danger" })
+}

@@ -1,0 +1,32 @@
+﻿@model EDeviceClaims.WebUi.Models.DeviceListViewModel
+<br />
+<hr />
+<div class="welcome" align="center">
+    <h1>All Devices</h1>
+</div>
+<hr />
+<br />
+<div class="row">
+    <div class="col-lg-4">
+        <p>List of all devices in the policies table.</p>
+    </div>
+</div>
+<table class="table table-bordered table-hover">
+    @foreach (var device in Model)
+    {
+        <tr>
+            <td>
+                <h3>@device.Name</h3>
+            </td>
+            <td>
+                <div class="btn-group">
+                    @Html.ActionLink("Details", "DeviceDetails", "UnderwriterDevice", new { @policyId = device.PolicyId }, new { @class = "btn btn-lg btn-info" })
+                    @Html.Partial("_ClaimButton", device)
+                </div>
+            </td>
+        </tr>
+    }
+</table>
+<hr />
+@Html.ActionLink("Return Home", "Index", "Home", new { @id = "HomePage" }, new { @class = "btn btn-info" })
+<br />

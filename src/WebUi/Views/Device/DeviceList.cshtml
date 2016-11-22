@@ -1,0 +1,36 @@
+﻿@model EDeviceClaims.WebUi.Models.DeviceListViewModel
+<br/>
+<hr />
+<div class="welcome" align="center">
+    <h1>My Devices</h1>
+</div>
+<hr />
+<br />
+
+<div class="row">
+    <div class="col-lg-4">
+        <p>You can view your device details below. You can also start a new claim or review the current status of a claim in progress. Please click a following option to begin. </p>
+    </div>
+</div>
+
+<table class="table table-bordered table-hover">
+    @foreach (var deviceViewModel in Model)
+    {
+        <tr>
+            <td>
+                <h3>@deviceViewModel.Name</h3>
+            </td>
+            <td>
+                <div class="btn-group">
+                    @Html.ActionLink("Details", "DeviceDetails", "Device", new { @id = deviceViewModel.PolicyId }, new { @class = "btn btn-lg btn-info" })
+                    @Html.Partial("_ClaimButtons", deviceViewModel)
+                </div>
+            </td>
+        </tr>
+    }
+</table>
+
+<hr/>
+@Html.ActionLink("Return Home", "Index", "Home", new {@id ="HomePage"}, new { @class = "btn btn-info" })
+
+<br />
